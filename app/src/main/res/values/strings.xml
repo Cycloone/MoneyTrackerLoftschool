@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Loftschool money tracker June17</string>
+    <string name="name_hint">Название</string>
+    <string name="money_count">0</string>
+    <string name="button_text">+</string>
+    <string name="ruble_sign">Р</string>
 </resources>
