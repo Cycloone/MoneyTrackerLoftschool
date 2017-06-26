@@ -6,4 +6,6 @@
     <color name="colorForText">#ffffff</color>
     <color name="colorForTextBackground">#95989a</color>
     <color name="colorForInput">#ffffff</color>
+    <color name="goods_value">#fcc418</color>
+    <color name="goods_price">#e6ae1e</color>
 </resources>
