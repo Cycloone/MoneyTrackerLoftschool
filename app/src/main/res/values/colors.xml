@@ -8,4 +8,8 @@
     <color name="colorForInput">#ffffff</color>
     <color name="goods_value">#fcc418</color>
     <color name="goods_price">#e6ae1e</color>
+    <color name="colorOfAllTabs">#95c9b8</color>
+    <color name="colorInactiveTab">#dbece6</color>
+    <color name="colorIndicator">#fff67a</color>
+
 </resources>
