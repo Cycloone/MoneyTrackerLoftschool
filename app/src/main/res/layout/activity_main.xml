@@ -1,63 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_pattern"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.MainActivity">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:padding="@dimen/margin_large"
-        android:background="@color/colorForInput"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:background="@color/colorOfAllTabs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/colorIndicator"
+        app:tabSelectedTextColor="@color/colorForText"
+        app:tabTextColor="@color/colorInactiveTab" />
 
-        <EditText
-            android:id="@+id/id_name_hint"
-            android:background="@android:color/transparent"
-            android:maxLines="1"
-            android:inputType="text"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/colorForTextBackground"
-            android:textSize="@dimen/margin_default_txt"
-            android:hint="@string/name_hint"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-        <EditText
-            android:id="@+id/id_money_count"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:inputType="number"
-            android:textColor="@color/colorForTextBackground"
-            android:gravity="end"
-            android:textSize="@dimen/margin_default_txt"
-            android:hint="@string/money_count"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="@dimen/margin_default_txt"
-            android:text="@string/ruble_sign"
-            android:textColor="@color/colorForTextBackground" />
-
-        <TextView
-            android:id="@+id/id_button"
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:enabled="false"
-            android:paddingEnd="@dimen/margin_large"
-            android:paddingStart="@dimen/margin_large"
-            android:text="@string/button_text"
-            android:textColor="@color/colorForTextBackground"
-            android:textSize="30sp" />
-    </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>

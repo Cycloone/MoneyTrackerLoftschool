@@ -13,7 +13,7 @@ public class AddGoodsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add);
         final TextView add = (TextView) findViewById(R.id.id_button);
         final EditText name_hint = (EditText) findViewById(R.id.id_name_hint);
         final EditText money_count = (EditText) findViewById(R.id.id_money_count);

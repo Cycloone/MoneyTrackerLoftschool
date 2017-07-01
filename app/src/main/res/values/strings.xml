@@ -3,5 +3,18 @@
     <string name="name_hint">Название</string>
     <string name="money_count">0</string>
     <string name="button_text">+</string>
-    <string name="ruble_sign">\u00A0 \u20BD</string>
+    <string name="ruble_sign">Р</string>
+
+    <string name="expenses">РАСХОДЫ</string>
+    <string name="incomes">ДОХОДЫ</string>
+    <string name="balance">БАЛАНС</string>
+    <string name="total_rubs_count">Ваш баланс</string>
+    <string name="total_money">100</string>
+
+    <array name="main_pager_titles">
+        <item>@string/expenses</item>
+        <item>@string/incomes</item>
+        <item>@string/balance</item>
+    </array>
+
 </resources>
