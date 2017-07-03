@@ -2,4 +2,5 @@
     <string name="ruble_sign">\u20bd</string>
     <string name="total_rubs_count">Ваш баланс</string>
     <string name="total_money">100</string>
+    <string name="error">Ошибка!</string>
 </resources>

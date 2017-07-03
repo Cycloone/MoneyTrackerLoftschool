@@ -10,9 +10,13 @@ public class Item {
 
     final String name;
     final int price;
+    final int id;
+    final String type;
 
-    public Item(String name, int price) {
+    public Item(String name, int price, int id, String type) {
         this.name = name;
         this.price = price;
+        this.type = type;
+        this.id = id;
     }
 }
