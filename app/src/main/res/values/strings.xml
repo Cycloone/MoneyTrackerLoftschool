@@ -11,6 +11,8 @@
     <string name="total_rubs_count">Ваш баланс</string>
     <string name="total_money">100</string>
     <string name="error">Ошибка!</string>
+    <string name="new_item">Новая запись</string>
+
 
     <array name="main_pager_titles">
         <item>@string/expenses</item>

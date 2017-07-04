@@ -9,11 +9,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class AddGoodsActivity extends AppCompatActivity {
+    public static final String EXTRA_TYPE = "type";
+    public static final String RESULT_ITEM = "item";
+    public static final String RESULT_PRICE = "price";
+    public static final int RC_ADD_ITEM = 99;
+    private String type;
+    private String price;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        type = getIntent().getStringExtra(EXTRA_TYPE);
+        price = getIntent().getStringExtra(RESULT_PRICE);
+
+
+
         final TextView add = (TextView) findViewById(R.id.id_button);
         final EditText name_hint = (EditText) findViewById(R.id.id_name_hint);
         final EditText money_count = (EditText) findViewById(R.id.id_money_count);
