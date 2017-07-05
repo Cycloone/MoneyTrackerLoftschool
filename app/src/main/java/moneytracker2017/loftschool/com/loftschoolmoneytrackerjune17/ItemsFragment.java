@@ -21,8 +21,6 @@ import moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.api.PostResu
 
 import static android.app.Activity.RESULT_OK;
 import static moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.AddGoodsActivity.RC_ADD_ITEM;
-import static moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.AddGoodsActivity.RESULT_ITEM;
-import static moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.R.id.price;
 
 
 public class ItemsFragment extends Fragment {
@@ -68,7 +66,6 @@ public class ItemsFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddGoodsActivity.class);
                 intent.putExtra(AddGoodsActivity.EXTRA_TYPE, type);
-                intent.putExtra(AddGoodsActivity.RESULT_PRICE, price);
                 startActivityForResult(intent, RC_ADD_ITEM);
             }
 
@@ -112,8 +109,8 @@ public class ItemsFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == RC_ADD_ITEM && resultCode == RESULT_OK) {
-            Item item = (Item) data.getSerializableExtra(RESULT_ITEM);
+        if (requestCode == AddGoodsActivity.RC_ADD_ITEM && resultCode == RESULT_OK) {
+            Item item = (Item) data.getSerializableExtra(AddGoodsActivity.RESULT_ITEM);
             Toast toast = Toast.makeText(getContext(), item.name, Toast.LENGTH_LONG);
             toast.show();
         }
