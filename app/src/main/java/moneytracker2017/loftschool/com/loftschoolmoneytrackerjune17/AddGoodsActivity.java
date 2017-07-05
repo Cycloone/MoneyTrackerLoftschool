@@ -26,7 +26,6 @@ public class AddGoodsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         type = getIntent().getStringExtra(EXTRA_TYPE);
-        price = getIntent().getStringExtra(RESULT_PRICE);
 
         final TextView add = (TextView) findViewById(R.id.id_button);
         final EditText name_hint = (EditText) findViewById(R.id.id_name_hint);
@@ -35,9 +34,10 @@ public class AddGoodsActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent intent = new Intent(getActivity(), AddGoodsActivity.class);
-                intent.putExtra(AddGoodsActivity.EXTRA_TYPE, type);
-                startActivityForResult(intent, RC_ADD_ITEM);
+                Intent result = new Intent();
+                result.putExtra(RESULT_ITEM, new Item(name_hint.getText().toString(), Integer.valueOf(money_count.getText().toString()), type));
+                setResult(RESULT_OK, result);
+                finish();
             }
         });
 
