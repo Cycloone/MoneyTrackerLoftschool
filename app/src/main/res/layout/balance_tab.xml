@@ -3,11 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:padding="@dimen/margin_between_rows">
+    android:padding="@dimen/margin_small">
 
 
     <RelativeLayout
         android:id="@+id/balance_layout"
+        android:padding="@dimen/margin_small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

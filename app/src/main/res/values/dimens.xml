@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
     <dimen name="margin_default_txt">26sp</dimen>
     <dimen name="margin_between_rows">10dp</dimen>
     <dimen name="margin_of_rows_list">65dp</dimen>
     <dimen name="margin_medium">15dp</dimen>
+
 </resources>

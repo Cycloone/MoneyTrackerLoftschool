@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_pattern"
-            android:padding="@dimen/margin_default_txt"
+            android:padding="@dimen/margin_small"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             tools:listitem="@layout/item" />
     </android.support.v4.widget.SwipeRefreshLayout>
