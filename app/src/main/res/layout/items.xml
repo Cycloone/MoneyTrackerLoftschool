@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_item">
+    android:background="@drawable/bg_pattern">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refresh"
@@ -15,8 +15,7 @@
             android:id="@+id/items"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_pattern"
-            android:padding="@dimen/margin_small"
+            android:padding="@dimen/margin_between_rows"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             tools:listitem="@layout/item" />
     </android.support.v4.widget.SwipeRefreshLayout>
