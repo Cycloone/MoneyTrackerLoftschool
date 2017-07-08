@@ -1,5 +1,6 @@
 package moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,8 +9,15 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -29,6 +37,50 @@ public class ItemsFragment extends Fragment {
     private static final int LOADER_REMOVE = 2;
     private View add;
     private SwipeRefreshLayout refresh;
+    private ActionMode actionMode;
+
+    private ActionMode.Callback actionModeCallback = new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            mode.getMenuInflater().inflate(R.menu.items, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.menu_remove:
+                    new AlertDialog.Builder(getContext())
+                            .setTitle(R.string.app_name)
+                            .setMessage(R.string.confirm_remove)
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                    for (Integer selecedItemId : adapter.getSelectedItems())
+                                        removeItem();
+                                }
+                            })
+                            .show();
+                    return true;
+            }
+
+            return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            actionMode = null;
+            adapter.clearSelections();
+        }
+    };
+
+    private void removeItem() {
+    }
 
 
     public static final String ARG_TYPE = "type";
@@ -48,6 +100,35 @@ public class ItemsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final RecyclerView items = (RecyclerView) view.findViewById(R.id.items);
         items.setAdapter(adapter);
+        final GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public void onLongPress(MotionEvent e) {
+                actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+                adapter.toggleSelection(items.getChildLayoutPosition(items.findChildViewUnder(e.getX(), e.getY())));
+            }
+
+            @Override
+            public boolean onSingleTapConfirmed(MotionEvent e) {
+                toggleSelection(e, items);
+                return super.onSingleTapConfirmed(e);
+            }
+
+        });
+        items.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return gestureDetector.onTouchEvent(event);
+            }
+        });
+
+        SwipeRefreshLayout refresh = (SwipeRefreshLayout) view.findViewById(R.id.refresh);
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadItems();
+            }
+        });
+
         type = getArguments().getString(ARG_TYPE);
         api = ((LSApp) getActivity().getApplication()).api();
         loadItems();
@@ -72,6 +153,9 @@ public class ItemsFragment extends Fragment {
         });
     }
 
+    private void toggleSelection(MotionEvent e, RecyclerView items) {
+        adapter.toggleSelection(items.getChildLayoutPosition(items.findChildViewUnder(e.getX(), e.getY())));
+    }
 
     private void loadItems() {
         getLoaderManager().initLoader(LOADER_ITEMS, null, new LoaderManager.LoaderCallbacks<List<Item>>() {

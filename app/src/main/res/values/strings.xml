@@ -12,6 +12,7 @@
     <string name="total_money">100</string>
     <string name="error">Ошибка!</string>
     <string name="new_item">Новая запись</string>
+    <string name="confirm_remove">Вы точно хотите удалить?</string>
 
 
     <array name="main_pager_titles">
