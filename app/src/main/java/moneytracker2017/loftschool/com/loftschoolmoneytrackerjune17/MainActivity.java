@@ -6,14 +6,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private TabLayout tabs;
+    private ViewPager pages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        tabs = (TabLayout) findViewById(R.id.tabs);
+        pages = (ViewPager) findViewById(R.id.pages);
         final TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         final ViewPager pages = (ViewPager) findViewById(R.id.pages);
         pages.setAdapter(new MainPagerAdapter());
@@ -33,15 +41,14 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             if (position == getCount() - 1)
                 return new BalanceFragment();
+
             final ItemsFragment fragment = new ItemsFragment();
             String type = (position == 0) ? Item.TYPE_EXPENSE : Item.TYPE_INCOME;
             Bundle args = new Bundle();
             args.putString(ItemsFragment.ARG_TYPE, Item.TYPE_EXPENSE);
             fragment.setArguments(args);
-
             return fragment;
         }
-
 
         @Override
         public CharSequence getPageTitle(int position) {
@@ -57,4 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void initUi() {
+        if (pages.getAdapter() != null)
+            return;
+        pages.setAdapter(new MainPagerAdapter());
+        tabs.setupWithViewPager(pages);
+    }
 }

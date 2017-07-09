@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/margin_between_rows">
-
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_between_rows"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:elevation="@dimen/margin_small"
+    card_view:cardCornerRadius="2dp">
 
     <RelativeLayout
         android:id="@+id/item_container"
@@ -13,37 +17,35 @@
 
         <TextView
             android:id="@+id/name"
-            android:padding="@dimen/margin_between_rows"
-            android:background="@color/goods_value"
-            android:gravity="center_vertical"
+            style="@style/TextWhite"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/margin_of_rows_list"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@+id/price"
-            style="@style/TextWhite" />
-
+            android:background="@color/goods_value"
+            android:gravity="center_vertical" />
 
         <TextView
             android:id="@+id/price"
-            android:background="@color/goods_price"
-            android:maxLines="1"
-            android:gravity="center_vertical"
-            android:textAlignment="center"
+            style="@style/TextWhite"
             android:layout_width="78dp"
             android:layout_height="@dimen/margin_of_rows_list"
             android:layout_alignParentEnd="true"
-            style="@style/TextWhite" />
+            android:background="@color/goods_price"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textAlignment="center" />
 
         <TextView
             style="@style/TextWhite"
             android:layout_width="24dp"
             android:layout_height="@dimen/margin_of_rows_list"
-            android:maxLines="1"
-            android:gravity="center_vertical"
-            android:layout_gravity="center_vertical"
             android:layout_alignParentEnd="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:maxLines="1"
             android:text="@string/ruble_sign" />
 
     </RelativeLayout>
 
-</FrameLayout>
+</android.support.v7.widget.CardView>

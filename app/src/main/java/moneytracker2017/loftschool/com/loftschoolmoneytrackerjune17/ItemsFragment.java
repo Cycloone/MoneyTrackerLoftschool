@@ -1,11 +1,13 @@
 package moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +19,16 @@ import java.util.List;
 import moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.api.LSApi;
 import moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.api.PostResults;
 
+import static android.app.Activity.RESULT_OK;
+import static moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.AddGoodsActivity.RC_ADD_ITEM;
+
 
 public class ItemsFragment extends Fragment {
     private static final int LOADER_ITEMS = 0;
     private static final int LOADER_ADD = 1;
     private static final int LOADER_REMOVE = 2;
+    private View add;
+    private SwipeRefreshLayout refresh;
 
 
     public static final String ARG_TYPE = "type";
@@ -44,7 +51,27 @@ public class ItemsFragment extends Fragment {
         type = getArguments().getString(ARG_TYPE);
         api = ((LSApp) getActivity().getApplication()).api();
         loadItems();
+        refresh = (SwipeRefreshLayout) view.
+                findViewById(R.id.refresh);
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadItems();
+            }
+        });
+
+        add = view.findViewById(R.id.add);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddGoodsActivity.class);
+                intent.putExtra(AddGoodsActivity.EXTRA_TYPE, type);
+                startActivityForResult(intent, RC_ADD_ITEM);
+            }
+
+        });
     }
+
 
     private void loadItems() {
         getLoaderManager().initLoader(LOADER_ITEMS, null, new LoaderManager.LoaderCallbacks<List<Item>>() {
@@ -78,6 +105,15 @@ public class ItemsFragment extends Fragment {
             public void onLoaderReset(Loader<List<Item>> loader) {
             }
         }).forceLoad();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == AddGoodsActivity.RC_ADD_ITEM && resultCode == RESULT_OK) {
+            Item item = (Item) data.getSerializableExtra(AddGoodsActivity.RESULT_ITEM);
+            Toast toast = Toast.makeText(getContext(), item.name, Toast.LENGTH_LONG);
+            toast.show();
+        }
     }
 
 
@@ -114,4 +150,5 @@ public class ItemsFragment extends Fragment {
         }).forceLoad();
 
     }
+
 }

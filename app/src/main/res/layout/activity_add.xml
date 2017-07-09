@@ -1,63 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bg_pattern"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_pattern"
     tools:context="moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.MainActivity">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:padding="@dimen/margin_large"
-        android:background="@color/colorForInput"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:elevation="4dp">
 
-        <EditText
-            android:id="@+id/id_name_hint"
-            android:background="@android:color/transparent"
-            android:maxLines="1"
-            android:inputType="text"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/colorForTextBackground"
-            android:textSize="@dimen/margin_default_txt"
-            android:hint="@string/name_hint"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/id_money_count"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:inputType="number"
-            android:textColor="@color/colorForTextBackground"
-            android:gravity="end"
-            android:textSize="@dimen/margin_default_txt"
-            android:hint="@string/money_count"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="@dimen/margin_default_txt"
-            android:text="@string/ruble_sign"
-            android:textColor="@color/colorForTextBackground" />
+            android:background="@color/colorForInput"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_large">
 
-        <TextView
-            android:id="@+id/id_button"
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:enabled="false"
-            android:paddingEnd="@dimen/margin_large"
-            android:paddingStart="@dimen/margin_large"
-            android:text="@string/button_text"
-            android:textColor="@color/colorForTextBackground"
-            android:textSize="30sp" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/id_name_hint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="@string/name_hint"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/colorForTextBackground"
+                android:textSize="@dimen/margin_default_txt" />
+
+            <EditText
+                android:id="@+id/id_money_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:gravity="end"
+                android:hint="@string/money_count"
+                android:inputType="number"
+                android:textColor="@color/colorForTextBackground"
+                android:textSize="@dimen/margin_default_txt" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/ruble_sign"
+                android:textColor="@color/colorForTextBackground"
+                android:textSize="@dimen/margin_default_txt" />
+
+            <TextView
+                android:id="@+id/id_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:enabled="false"
+                android:paddingEnd="@dimen/margin_large"
+                android:paddingStart="@dimen/margin_large"
+                android:text="@string/button_text"
+                android:textColor="@color/colorForTextBackground"
+                android:textSize="30sp" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </FrameLayout>

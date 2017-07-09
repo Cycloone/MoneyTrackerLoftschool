@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin_between_rows">
+    android:orientation="horizontal"
+    android:padding="@dimen/margin_small">
 
 
     <RelativeLayout
         android:id="@+id/balance_layout"
+        android:padding="@dimen/margin_small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/name"
-            android:padding="@dimen/margin_between_rows"
-            android:background="@color/goods_value"
-            android:gravity="center_vertical"
+            style="@style/TextWhite"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/margin_of_rows_list"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@+id/total_rubs"
-            android:text="@string/total_rubs_count"
-            style="@style/TextWhite" />
+            android:background="@color/goods_value"
+            android:gravity="center_vertical"
+            android:padding="@dimen/margin_between_rows"
+            android:text="@string/total_rubs_count" />
 
 
         <TextView
             android:id="@+id/total_rubs"
-            android:text="@string/total_money"
-            android:background="@color/goods_price"
-            android:maxLines="1"
-            android:gravity="center_vertical"
-            android:textAlignment="center"
+            style="@style/TextWhite"
             android:layout_width="78dp"
             android:layout_height="@dimen/margin_of_rows_list"
             android:layout_alignParentEnd="true"
-            style="@style/TextWhite" />
+            android:background="@color/goods_price"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="@string/total_money"
+            android:textAlignment="center" />
 
         <TextView
             style="@style/TextWhite"
             android:layout_width="24dp"
             android:layout_height="@dimen/margin_of_rows_list"
-            android:maxLines="1"
-            android:gravity="center_vertical"
-            android:layout_gravity="center_vertical"
             android:layout_alignParentEnd="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:maxLines="1"
             android:text="@string/ruble_sign" />
 
     </RelativeLayout>
