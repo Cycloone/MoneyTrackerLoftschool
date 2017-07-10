@@ -13,4 +13,6 @@
     <color name="colorIndicator">#f8f89a</color>
     <color name="colorItemSelected">#995200</color>
     <color name="colorItem">#fcc31e</color>
+    <color name="colorItemMarked">#954F00</color>
+    <color name="colorMarked">#e67e22</color>
 </resources>

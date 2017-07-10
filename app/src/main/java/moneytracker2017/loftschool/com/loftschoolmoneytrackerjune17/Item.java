@@ -19,6 +19,5 @@ public class Item implements Serializable {
         this.name = name;
         this.price = price;
         this.type = type;
-        this.id = id;
     }
 }

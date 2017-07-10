@@ -13,6 +13,7 @@
     <string name="error">Ошибка!</string>
     <string name="new_item">Новая запись</string>
     <string name="confirm_remove">Вы точно хотите удалить?</string>
+    <string name="Remove">Удалено</string>
 
 
     <array name="main_pager_titles">

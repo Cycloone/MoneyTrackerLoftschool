@@ -61,27 +61,31 @@ public class ItemsFragment extends Fragment {
                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
-                                    for (Integer selecedItemId : adapter.getSelectedItems())
-                                        removeItem();
+                                    for (Integer selectedItemId : adapter.getSelectedItems())
+                                        removeItem(selectedItemId);
+                                }
+                            })
+                            .setNegativeButton(android.R.string.cancel, null)
+                            .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                @Override
+                                public void onDismiss(DialogInterface dialog) {
+                                    actionMode.finish();
                                 }
                             })
                             .show();
                     return true;
             }
-
             return false;
         }
+
 
         @Override
         public void onDestroyActionMode(ActionMode mode) {
             actionMode = null;
             adapter.clearSelections();
+            add.setVisibility(View.VISIBLE);
         }
     };
-
-    private void removeItem() {
-    }
-
 
     public static final String ARG_TYPE = "type";
     private String type;
@@ -103,8 +107,11 @@ public class ItemsFragment extends Fragment {
         final GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
             @Override
             public void onLongPress(MotionEvent e) {
-                actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
-                adapter.toggleSelection(items.getChildLayoutPosition(items.findChildViewUnder(e.getX(), e.getY())));
+                if (actionMode == null) {
+                    actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+                    adapter.toggleSelection(items.getChildLayoutPosition(items.findChildViewUnder(e.getX(), e.getY())));
+                    add.setVisibility(View.INVISIBLE);
+                }
             }
 
             @Override
@@ -132,14 +139,6 @@ public class ItemsFragment extends Fragment {
         type = getArguments().getString(ARG_TYPE);
         api = ((LSApp) getActivity().getApplication()).api();
         loadItems();
-        refresh = (SwipeRefreshLayout) view.
-                findViewById(R.id.refresh);
-        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                loadItems();
-            }
-        });
 
         add = view.findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +181,8 @@ public class ItemsFragment extends Fragment {
                 } else {
                     adapter.clear();
                     adapter.addAll(data);
+                    //if option enabled - crash
+//                    refresh.setRefreshing(false);
                 }
             }
 
@@ -235,4 +236,39 @@ public class ItemsFragment extends Fragment {
 
     }
 
+    private void removeItem(final int item_id) {
+        getLoaderManager().initLoader(LOADER_REMOVE, null, new LoaderManager.LoaderCallbacks<AddGoodsActivity>() {
+
+            @Override
+            public Loader<AddGoodsActivity> onCreateLoader(int id, Bundle args) {
+
+                return new AsyncTaskLoader<AddGoodsActivity>(getContext()) {
+                    @Override
+                    public AddGoodsActivity loadInBackground() {
+                        try {
+                            return api.remove(item_id).execute().body();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            return null;
+                        }
+                    }
+                };
+            }
+
+            @Override
+            public void onLoadFinished(Loader<AddGoodsActivity> loader, AddGoodsActivity data) {
+                if (data == null) {
+                    Toast.makeText(getContext(), R.string.error, Toast.LENGTH_SHORT).show();
+                } else {
+                    adapter.remove(data.id);
+                    Toast.makeText(getContext(), R.string.Remove, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onLoaderReset(Loader<AddGoodsActivity> loader) {
+            }
+        }).forceLoad();
+
+    }
 }
