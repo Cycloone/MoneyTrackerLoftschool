@@ -128,11 +128,13 @@ public class ItemsFragment extends Fragment {
             }
         });
 
-        SwipeRefreshLayout refresh = (SwipeRefreshLayout) view.findViewById(R.id.refresh);
+        final SwipeRefreshLayout refresh = (SwipeRefreshLayout) view.findViewById(R.id.refresh);
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 loadItems();
+                refresh.setRefreshing(false);
+
             }
         });
 
@@ -181,8 +183,6 @@ public class ItemsFragment extends Fragment {
                 } else {
                     adapter.clear();
                     adapter.addAll(data);
-                    //if option enabled - crash
-//                    refresh.setRefreshing(false);
                 }
             }
 

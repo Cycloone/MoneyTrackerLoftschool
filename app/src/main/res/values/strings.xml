@@ -3,7 +3,7 @@
     <string name="name_hint">Название</string>
     <string name="money_count">0</string>
     <string name="button_text">+</string>
-    <string name="ruble_sign">\u0020 Р</string>
+    <string name="ruble_sign">Р</string>
 
     <string name="expenses">РАСХОДЫ</string>
     <string name="incomes">ДОХОДЫ</string>
