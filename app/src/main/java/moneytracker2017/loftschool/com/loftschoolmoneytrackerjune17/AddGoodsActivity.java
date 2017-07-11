@@ -19,6 +19,7 @@ public class AddGoodsActivity extends AppCompatActivity {
     public static final int RC_ADD_ITEM = 99;
     private String type;
     private String price;
+    public int id;
 
 
     @Override
