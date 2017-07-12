@@ -14,6 +14,7 @@
     <string name="new_item">Новая запись</string>
     <string name="confirm_remove">Вы точно хотите удалить?</string>
     <string name="Remove">Удалено</string>
+    <string name="about_app">Ваш незаменимый помощник\nв управлении бюджетом</string>
 
 
     <array name="main_pager_titles">
