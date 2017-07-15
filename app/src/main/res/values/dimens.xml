@@ -7,5 +7,9 @@
     <dimen name="margin_of_rows_list">65dp</dimen>
     <dimen name="margin_medium">15dp</dimen>
     <dimen name="padding_for_items">10dp</dimen>
+    <dimen name="text_xlarge">50sp</dimen>
+    <dimen name="text_medium">24sp</dimen>
+    <dimen name="text_yourBalance">20sp</dimen>
+    <dimen name="text_hintItem">13sp</dimen>
 
 </resources>

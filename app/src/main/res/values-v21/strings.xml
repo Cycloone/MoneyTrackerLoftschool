@@ -5,4 +5,5 @@
     <string name="error">Ошибка!</string>
     <string name="confirm_remove">Вы точно хотите удалить?</string>
     <string name="Remove">Удалено</string>
+    <string name="count">%1$d \u20bd</string>
 </resources>

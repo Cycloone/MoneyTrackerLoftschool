@@ -110,7 +110,7 @@ public class ItemsFragment extends Fragment {
                 if (actionMode == null) {
                     actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
                     adapter.toggleSelection(items.getChildLayoutPosition(items.findChildViewUnder(e.getX(), e.getY())));
-                    add.setVisibility(View.INVISIBLE);
+                    add.setVisibility(View.GONE);
                 }
             }
 
@@ -196,8 +196,7 @@ public class ItemsFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == AddGoodsActivity.RC_ADD_ITEM && resultCode == RESULT_OK) {
             Item item = (Item) data.getSerializableExtra(AddGoodsActivity.RESULT_ITEM);
-            Toast toast = Toast.makeText(getContext(), item.name, Toast.LENGTH_LONG);
-            toast.show();
+            postItems(item);
         }
     }
 
@@ -225,8 +224,10 @@ public class ItemsFragment extends Fragment {
                 if (data == null) {
                     Toast.makeText(getContext(), R.string.error, Toast.LENGTH_SHORT).show();
                 } else {
-                    adapter.clear();
+                    item.id = data.id;
+                    adapter.add(item);
                 }
+                getLoaderManager().destroyLoader(LOADER_ADD);
             }
 
             @Override
@@ -263,6 +264,7 @@ public class ItemsFragment extends Fragment {
                     adapter.remove(data.id);
                     Toast.makeText(getContext(), R.string.Remove, Toast.LENGTH_SHORT).show();
                 }
+                getLoaderManager().destroyLoader(LOADER_REMOVE);
             }
 
             @Override

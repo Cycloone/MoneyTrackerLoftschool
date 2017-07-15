@@ -20,7 +20,8 @@ public interface LSApi {
     @GET("items")
     Call<List<Item>> items(@Query("type") String type);
 
-    @POST("items")
+    @Headers("Content-Type: application/json")
+    @POST("items/add")
     Call<PostResults> add(@Query("name") String name, @Query("price") int price, @Query("type") String type);
 
     @POST("items/remove")
@@ -28,4 +29,7 @@ public interface LSApi {
 
     @GET("auth")
     Call<AuthResult> auth(@Query("social_user_id") String socialUserId);
+
+    @GET("balance")
+    Call<BalanceResult> balance();
 }
