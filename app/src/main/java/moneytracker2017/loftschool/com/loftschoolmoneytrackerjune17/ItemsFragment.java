@@ -238,14 +238,14 @@ public class ItemsFragment extends Fragment {
     }
 
     private void removeItem(final int item_id) {
-        getLoaderManager().initLoader(LOADER_REMOVE, null, new LoaderManager.LoaderCallbacks<AddGoodsActivity>() {
+        getLoaderManager().initLoader(LOADER_REMOVE, null, new LoaderManager.LoaderCallbacks<PostResults>() {
 
             @Override
-            public Loader<AddGoodsActivity> onCreateLoader(int id, Bundle args) {
+            public Loader<PostResults> onCreateLoader(int id, Bundle args) {
 
-                return new AsyncTaskLoader<AddGoodsActivity>(getContext()) {
+                return new AsyncTaskLoader<PostResults>(getContext()) {
                     @Override
-                    public AddGoodsActivity loadInBackground() {
+                    public PostResults loadInBackground() {
                         try {
                             return api.remove(item_id).execute().body();
                         } catch (Exception e) {
@@ -257,7 +257,7 @@ public class ItemsFragment extends Fragment {
             }
 
             @Override
-            public void onLoadFinished(Loader<AddGoodsActivity> loader, AddGoodsActivity data) {
+            public void onLoadFinished(Loader<PostResults> loader, PostResults data) {
                 if (data == null) {
                     Toast.makeText(getContext(), R.string.error, Toast.LENGTH_SHORT).show();
                 } else {
@@ -268,7 +268,7 @@ public class ItemsFragment extends Fragment {
             }
 
             @Override
-            public void onLoaderReset(Loader<AddGoodsActivity> loader) {
+            public void onLoaderReset(Loader<PostResults> loader) {
             }
         }).forceLoad();
 

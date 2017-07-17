@@ -2,7 +2,6 @@ package moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.api;
 
 import java.util.List;
 
-import moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.AddGoodsActivity;
 import moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.Item;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -25,7 +24,7 @@ public interface LSApi {
     Call<PostResults> add(@Query("name") String name, @Query("price") int price, @Query("type") String type);
 
     @POST("items/remove")
-    Call<AddGoodsActivity> remove(@Query("id") int id);
+    Call<PostResults> remove(@Query("id") int id);
 
     @GET("auth")
     Call<AuthResult> auth(@Query("social_user_id") String socialUserId);
