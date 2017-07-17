@@ -5,6 +5,6 @@ package moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.api;
  */
 
 public class BalanceResult extends Result {
-    public long MoneyExpense;
-    public long MoneyIncome;
+    public long totalExpenses;
+    public long totalIncome;
 }
