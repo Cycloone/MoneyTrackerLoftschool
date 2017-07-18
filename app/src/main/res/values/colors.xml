@@ -15,4 +15,7 @@
     <color name="colorItem">#fcc31e</color>
     <color name="colorItemMarked">#954F00</color>
     <color name="colorMarked">#e67e22</color>
+    <color name="colorExpense">#f76c41</color>
+    <color name="colorComment">#95989a</color>
+    <color name="colorPrimaryBright">#3ab7ae</color>
 </resources>

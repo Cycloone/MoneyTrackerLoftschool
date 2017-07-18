@@ -1,52 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:padding="@dimen/margin_small">
+    android:layout_height="match_parent">
 
 
-    <RelativeLayout
-        android:id="@+id/balance_layout"
-        android:padding="@dimen/margin_small"
+    <TextView
+        android:id="@+id/balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginTop="40dp"
+        android:maxLines="1"
+        android:textColor="@color/colorPrimaryBright"
+        android:textSize="@dimen/text_xlarge"
+        tools:text="100000 \u20bd" />
+
+    <TextView
+        android:id="@+id/balance_caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/balance"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/yourBalance"
+        android:textColor="@color/colorComment"
+        android:textSize="@dimen/text_yourBalance" />
+
+    <TextView
+        android:id="@+id/expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/balance_caption"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:textColor="@color/colorExpense"
+        android:textSize="@dimen/text_xlarge"
+        app:layout_widthPercent="50%"
+        tools:text="40000 \u20bd" />
+
+    <TextView
+        android:id="@+id/income"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/balance_caption"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:textColor="@color/colorItem"
+        android:textSize="@dimen/text_xlarge"
+        app:layout_widthPercent="50%"
+        tools:text="95000 \u20bd" />
+
+    <TextView
+        android:id="@+id/expense_caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expense"
+        android:gravity="center_horizontal"
+        android:text="@string/expense"
+        android:textColor="@color/colorComment"
+        android:textSize="@dimen/text_medium"
+        app:layout_widthPercent="50%" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/expense"
+        android:gravity="center_horizontal"
+        android:text="@string/income"
+        android:textColor="@color/colorComment"
+        android:textSize="@dimen/text_medium"
+        app:layout_widthPercent="50%" />
+
+    <moneytracker2017.loftschool.com.loftschoolmoneytrackerjune17.DiagramView
+        android:id="@+id/diagram"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/expense_caption"
+        android:layout_margin="20dp" />
 
-        <TextView
-            android:id="@+id/name"
-            style="@style/TextWhite"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/margin_of_rows_list"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/total_rubs"
-            android:background="@color/goods_value"
-            android:gravity="center_vertical"
-            android:padding="@dimen/margin_between_rows"
-            android:text="@string/total_rubs_count" />
-
-
-        <TextView
-            android:id="@+id/total_rubs"
-            style="@style/TextWhite"
-            android:layout_width="78dp"
-            android:layout_height="@dimen/margin_of_rows_list"
-            android:layout_alignParentEnd="true"
-            android:background="@color/goods_price"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:text="@string/total_money"
-            android:textAlignment="center" />
-
-        <TextView
-            style="@style/TextWhite"
-            android:layout_width="24dp"
-            android:layout_height="@dimen/margin_of_rows_list"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:text="@string/ruble_sign" />
-
-    </RelativeLayout>
-
-</FrameLayout>
+</android.support.percent.PercentRelativeLayout>

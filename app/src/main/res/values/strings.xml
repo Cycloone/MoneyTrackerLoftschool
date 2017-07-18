@@ -15,6 +15,10 @@
     <string name="confirm_remove">Вы точно хотите удалить?</string>
     <string name="Remove">Удалено</string>
     <string name="about_app">Ваш незаменимый помощник\nв управлении бюджетом</string>
+    <string name="expense">расход</string>
+    <string name="income">доход</string>
+    <string name="count">%1$d Р</string>
+    <string name="yourBalance">ваш баланс</string>
 
 
     <array name="main_pager_titles">

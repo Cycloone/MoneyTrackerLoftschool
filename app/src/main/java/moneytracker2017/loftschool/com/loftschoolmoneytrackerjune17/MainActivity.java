@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabs;
     private ViewPager pages;
+    private String[] types = {Item.TYPE_EXPENSE, Item.TYPE_INCOME};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +24,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabs = (TabLayout) findViewById(R.id.tabs);
         pages = (ViewPager) findViewById(R.id.pages);
-        final TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-        final ViewPager pages = (ViewPager) findViewById(R.id.pages);
-        pages.setAdapter(new MainPagerAdapter());
-        tabs.setupWithViewPager(pages);
 
     }
 
@@ -36,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         if (!((LSApp) getApplication()).isLoggedIn())
             startActivity(new Intent(this, AuthActivity.class));
         else {
+            initUi();
         }
     }
 
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             final ItemsFragment fragment = new ItemsFragment();
             String type = (position == 0) ? Item.TYPE_EXPENSE : Item.TYPE_INCOME;
             Bundle args = new Bundle();
-            args.putString(ItemsFragment.ARG_TYPE, Item.TYPE_EXPENSE);
+            args.putString(ItemsFragment.ARG_TYPE, types[position]);
             fragment.setArguments(args);
             return fragment;
         }
@@ -70,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             return tittles.length;
         }
-
 
     }
 
