@@ -22,4 +22,11 @@
         <item name="windowActionModeOverlay">true</item>
     </style>
 
+    <style name="AboutApp">
+        <item name="android:textColor">@color/colorForText</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14.1sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
 </resources>
